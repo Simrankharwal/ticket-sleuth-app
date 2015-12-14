@@ -1,0 +1,1 @@
+var app = angular.module("ticketSleuth", ["ticketSleuthController", "ticketSleuthService", "ui.bootstrap"]);

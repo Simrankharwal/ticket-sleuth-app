@@ -1,0 +1,20 @@
+span.glyphicon
+{
+  font-size: 20px;
+}
+
+.image
+{ 
+  border: solid 1px #000000;
+}
+
+.borderless
+{ 
+  border-top: none !important;
+}
+
+.hold-expiration
+{ 
+  color: #A94442;
+  font-weight: 500;
+}

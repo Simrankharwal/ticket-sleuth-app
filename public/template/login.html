@@ -1,0 +1,12 @@
+<div ng-show="isView('login')" class="jumbotron">
+  <h2 style="text-align:center">Ticket Sleuth<br/><small>The best way to score tickets</small></h2>  
+  <p>
+	  <input ng-model="user.email" ng-keypress="(user.email && $event.keyCode == 13 ) ? login() : null" type="text" placeholder="Email" style="width:100%"></input>
+  </p>
+  <button ng-show="user.email" ng-click="login()" class="btn btn-primary">
+    <span style="margin-right:5px" class="glyphicon glyphicon-log-in"></span>Login
+  </button>
+  <button ng-hide="user.email" class="btn btn-primary disabled" disabled>
+    <span style="margin-right:5px" class="glyphicon glyphicon-log-in"></span>Login
+  </button>
+</div>

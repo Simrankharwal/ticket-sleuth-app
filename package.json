@@ -1,0 +1,15 @@
+{
+  "name"         : "ticket sleuth",
+  "version"      : "0.1.0",
+  "description"  : "The best way to score the best tickets.",
+  "main"         : "server.js",
+  "author"       : "Chris Caputo",
+  "dependencies" : 
+  {
+    "express"    : "latest",
+    "request"    : "latest",
+    "morgan"	 : "latest",
+    "body-parser": "latest",
+    "method-override": "latest",
+  }
+}

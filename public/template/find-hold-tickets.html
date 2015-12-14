@@ -1,0 +1,42 @@
+<div ng-show="isView('holdDetails')" class="jumbotron">
+  <h3>Search for Tickets<br/><small>Select the sections between which you would like to search for tickets. Ticket Sleuth will always reserve the best available seats.</small></h3>
+  <p style="margin-top:25px">
+    <input ng-model="ticketRequest.numSeats" ng-keypress="(ticketRequest.numSeats && $event.keyCode == 13) ? findAndHoldSeats() : null" type="text" placeholder="Number of Seats" style="width:40%"></input>
+    <span ng-click="findAndHoldSeats()" class="glyphicon glyphicon-search"></span>
+  </p>
+  <p>
+    <select ng-model="ticketRequest.minLevel" ng-change="numSeatsAvailable(ticketRequest.minLevel)" ng-options="level.name for level in levels" class="form-control" style="width:60%"></select>
+    <small><i>({{ticketRequest.minLevel.available}} seats available)</i></small>
+  </p>
+  <p>
+    <select ng-model="ticketRequest.maxLevel" ng-change="numSeatsAvailable(ticketRequest.maxLevel)" ng-options="level.name for level in levels" class="form-control" style="width:60%"></select>
+    <small><i>({{ticketRequest.maxLevel.available}} seats available)</i></small>
+  </p>
+  <table ng-show="seatHold.seats" class="table table-striped">
+    <tr style="color: #FFFFFF; background-color: #337AB7;">
+      <th>Level</th>
+      <th>Row Number</th>
+      <th>Seat Number</th>
+    </tr>
+    <tr ng-repeat="seat in seatHold.seats">
+      <td>{{seat.level.name}}</td>
+      <td>{{seat.row}}</td>                
+      <td>{{seat.seatNumber}}</td>                
+    </tr>
+    <tr>
+      <td colspan="3" style="font-weight:500">Tickets held for '{{seatHold.customerEmail}}'</td>
+    </tr>
+    <tr>
+      <td colspan="3" class="hold-expiration">Hold expires {{seatHold.expiration | date:'MMM dd, yyyy HH:mm:ssZ'}}</td>
+    </tr>
+  </table>
+  <button ng-show="seatHold.seats" ng-click="reserveSeats(); popView()" class="btn btn-primary" >
+    <span class="glyphicon glyphicon-floppy-disk"></span>Reserve Seats
+  </button>
+  <button ng-hide="seatHold.seats" class="btn btn-primary disabled" disabled>
+    <span class="glyphicon glyphicon-floppy-disk"></span>Reserve Seats
+  </button>
+  <button ng-click="releaseSeats(); popView()" class="btn btn-default">
+    <span class="glyphicon glyphicon-remove"></span>Close
+  </button>
+</div>
