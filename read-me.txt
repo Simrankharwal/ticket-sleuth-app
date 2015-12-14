@@ -1,0 +1,3 @@
+Ticket Sleuth App
+
+The Ticket Sleuth App is an AngularJS app that runs on Node. The project contains a "package.json" file which declares all of the Node dependencies. To run the application execute the command "node server.js". The "ticketSleuthService.js" file contains the end-points for the Ticket Seluth service (Java application). If the Ticket Sleuth service is not running on localhost:8080 as the app expects that file will need to be updated.
