@@ -1,5 +1,5 @@
 {
-  "name"         : "ticket sleuth",
+  "name"         : "ticket-sleuth",
   "version"      : "0.1.0",
   "description"  : "The best way to score the best tickets.",
   "main"         : "server.js",
