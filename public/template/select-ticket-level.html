@@ -1,4 +1,4 @@
-<div ng-show="isView('findTickets')">
+<div>
   <table class="table">
     <tr>
       <td class="borderless"><img alt="Seating Chart" src="/image/seating-chart.jpg" class="image img-rounded img-responsive"></img></td>
@@ -6,7 +6,7 @@
     <tr>
       <td class="borderless">
 			  <uib-tabset id="tabset" vertical="true" type="pills">
-			    <uib-tab ng-repeat="level in levels" id="{{level.id}}" ng-click="setLevel(level); pushView('holdDetails')" heading="{{level.name}} ({{level.price | currency : $ : 2}})" uib-tooltip="{{level.available}} tickets available"></uib-tab>
+			    <uib-tab ng-repeat="level in levels" id="{{level.id}}" ng-click="selectLevel(level)" heading="{{level.name}} ({{level.price | currency : $ : 2}})" uib-tooltip="{{level.available}} tickets available"></uib-tab>
 			  </uib-tabset>
       </td>
     </tr>

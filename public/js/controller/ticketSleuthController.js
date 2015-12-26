@@ -1,17 +1,17 @@
 var app = angular.module("ticketSleuthController", [])
 
-app.controller("ticketSleuthController", function ($scope, $http, ticketSleuthService)
+app.controller("ticketSleuthController", function ($scope, $http, $location, $route, $routeParams, ticketSleuthService)
 {
   $scope.login = function()
   {
     $scope.getSeatingLevels();
-    $scope.setView("findTickets");
+    $scope.setView("/selectLevel");
   }
   
   $scope.logout = function()
   {
     $scope.user = {};
-    $scope.setView("login");
+    $scope.setView("/login");
   }
 
   $scope.addAlert = function(type, message)
@@ -33,35 +33,36 @@ app.controller("ticketSleuthController", function ($scope, $http, ticketSleuthSe
     $scope.addAlert("danger", "Oh snap! Something went wrong, plesase contact support. status='" + status + "' message='" + data + "'");
   };
 
-  $scope.setLevel = function(level)
+  $scope.selectLevel = function(level)
   {
     $scope.ticketRequest.minLevel = level;
     $scope.ticketRequest.maxLevel = level;
+    $scope.pushView("/findTickets/" + level.id);
   };
 
-  $scope.setView = function (view)
+  $scope.setView = function (path)
   {
-    $scope.view = view;
+    $location.path(path);
     
     $scope.viewStack = [];
-    $scope.viewStack.push(view);
+    $scope.viewStack.push(path);
   };
 
-  $scope.isView = function(view)
+  $scope.isView = function(path)
   {
-    return $scope.view == view;
+    return $location.path() == path;
   };
   
-  $scope.pushView = function(view)
+  $scope.pushView = function(path)
   {
-    $scope.view = view;
-    $scope.viewStack.push(view);
+    $location.path(path);
+    $scope.viewStack.push(path);
   };
 
   $scope.popView = function()
   {
     $scope.viewStack.pop();
-    $scope.view = $scope.viewStack[$scope.viewStack.length-1];
+    $location.path($scope.viewStack[$scope.viewStack.length-1]);
   };
 
   $scope.getSeatingLevels = function()
@@ -179,5 +180,4 @@ app.controller("ticketSleuthController", function ($scope, $http, ticketSleuthSe
   $scope.user = {};
   $scope.ticketRequest = {};
   $scope.alerts = [];
-  $scope.setView("login");
 });

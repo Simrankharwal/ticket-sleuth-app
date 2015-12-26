@@ -1,4 +1,4 @@
-<div ng-show="isView('holdDetails')" class="jumbotron">
+<div class="jumbotron">
   <h3>Search for Tickets<br/><small>Select the sections between which you would like to search for tickets. Ticket Sleuth will always reserve the best available seats.</small></h3>
   <p style="margin-top:25px">
     <input ng-model="ticketRequest.numSeats" ng-keypress="(ticketRequest.numSeats && $event.keyCode == 13) ? findAndHoldSeats() : null" type="text" placeholder="Number of Seats" style="width:40%"></input>

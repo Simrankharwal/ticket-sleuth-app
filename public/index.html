@@ -2,9 +2,11 @@
 <html>
     <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
       <link rel="stylesheet" type="text/css" href="/css/ticket-sleuth.css">
 
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
       <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>  
 
       <script src="js/controller/ticketSleuthController.js"></script>
@@ -13,9 +15,9 @@
     </head>
     
     <body ng-app="ticketSleuth">
-      <div id="ticketSleuthController" ng-controller="ticketSleuthController" class="container" style="max-width: 800px">
+      <div ng-controller="ticketSleuthController as main" class="container" style="max-width: 800px">
         <table class="table">
-          <tr ng-hide="isView('login')">
+          <tr ng-hide="isView('/login')">
             <td>
               <button ng-click="logout()" class="btn btn-link pull-right">
                 <span style="margin-right:5px;" class="glyphicon glyphicon-log-out"></span>Logout
@@ -27,9 +29,7 @@
           </tr>
           <tr>
             <td class="borderless">
-              <div ng-include="'/template/login.html'"></div>             
-              <div ng-include="'/template/select-ticket-level.html'"></div>
-              <div ng-include="'/template/find-hold-tickets.html'"></div>
+							<div id="main" ng-view></div>
             </td>
           </tr>
         </table>
